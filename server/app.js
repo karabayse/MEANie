@@ -51,18 +51,15 @@ var recordToAdd = {
   location:req.body.location
 };
 
-// recordToAdd.save(function(err){
-//   if(err){
-//     console.log(err);
-//   } else {
-//     console.log('recordToAdd created');
-//     res.sendStatus(200);
-//   }
-// });
-
 // create new record
 var newRecord = ourModels( recordToAdd );
   newRecord.save();
+});
+
+app.delete('/deleteRecords/:id', function(req, res){
+  ourModels.remove({_id:req.params.id}).then(function(){
+    res.send(200);
+  });
 });
 
 app.listen(port, function(){

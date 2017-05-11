@@ -46,4 +46,17 @@ vm.getRecords = function(){
   console.log( vm.records );
 });
 };
+
+vm.deleteRecords = function(id){
+  console.log('in deleteRecords' + id);
+  $http({
+  method: 'DELETE',
+  url: '/deleteRecords/' + id,
+}).then( function ( response ){
+  console.log('response ->', response);
+  vm.getRecords();
+  console.log( vm.getRecords );
+});
+};
+
 });
